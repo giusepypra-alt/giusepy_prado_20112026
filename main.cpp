@@ -1,32 +1,31 @@
-// Proyecto: Semaforo con ESP32 en Wokwi
-// Conexiones: LED rojo al GPIO 25, amarillo al GPIO 26 y verde al GPIO 27.
+// Practica 06 - Semaforo 1
+// Proyecto realizado en Wokwi con ESP32.
+// Secuencia: rojo (2 segundos), verde (2 segundos), amarillo (0,5 segundos).
 
-const int ledRojo = 25;
-const int ledAmarillo = 26;
-const int ledVerde = 27;
+const int rojo = 12;
+const int amarillo = 10;
+const int verde = 8;
 
 void setup() {
-  pinMode(ledRojo, OUTPUT);
-  pinMode(ledAmarillo, OUTPUT);
-  pinMode(ledVerde, OUTPUT);
+  pinMode(rojo, OUTPUT);
+  pinMode(amarillo, OUTPUT);
+  pinMode(verde, OUTPUT);
+
+  digitalWrite(rojo, LOW);
+  digitalWrite(amarillo, LOW);
+  digitalWrite(verde, LOW);
 }
 
 void loop() {
-  // Luz roja: detenerse
-  digitalWrite(ledRojo, HIGH);
-  digitalWrite(ledAmarillo, LOW);
-  digitalWrite(ledVerde, LOW);
-  delay(5000);
-
-  // Luz verde: avanzar
-  digitalWrite(ledRojo, LOW);
-  digitalWrite(ledAmarillo, LOW);
-  digitalWrite(ledVerde, HIGH);
-  delay(5000);
-
-  // Luz amarilla: precaucion
-  digitalWrite(ledRojo, LOW);
-  digitalWrite(ledAmarillo, HIGH);
-  digitalWrite(ledVerde, LOW);
+  digitalWrite(rojo, HIGH);
   delay(2000);
+  digitalWrite(rojo, LOW);
+
+  digitalWrite(verde, HIGH);
+  delay(2000);
+  digitalWrite(verde, LOW);
+
+  digitalWrite(amarillo, HIGH);
+  delay(500);
+  digitalWrite(amarillo, LOW);
 }
